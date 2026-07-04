@@ -1,0 +1,270 @@
+DeepEHR Data Exploration
+Looking for data in: /Users/denizalacam/Desktop/Projects/EHR_Project/deepehr-readmission/data/raw
+
+================================================================================
+FILE: patients.csv
+
+Rows: 1,163
+Columns: 25
+
+Columns:
+['Id', 'BIRTHDATE', 'DEATHDATE', 'SSN', 'DRIVERS', 'PASSPORT', 'PREFIX', 'FIRST', 'LAST', 'SUFFIX', 'MAIDEN', 'MARITAL', 'RACE', 'ETHNICITY', 'GENDER', 'BIRTHPLACE', 'ADDRESS', 'CITY', 'STATE', 'COUNTY', 'ZIP', 'LAT', 'LON', 'HEALTHCARE_EXPENSES', 'HEALTHCARE_COVERAGE']
+
+First 5 rows:
+                                     Id  ... HEALTHCARE_COVERAGE
+0  b9c610cd-28a6-4636-ccb6-c7a0d2a4cb85  ...           7964.1255
+1  c1f1fcaa-82fd-d5b7-3544-c8f9708b06a8  ...          14064.1350
+2  339144f8-50e1-633e-a013-f361391c4cff  ...            787.5375
+3  d488232e-bf14-4bed-08c0-a82f34b6a197  ...         104782.2070
+4  217f95a3-4e10-bd5d-fb67-0cfb5e8ba075  ...          18067.0950
+
+[5 rows x 25 columns]
+
+Missing values:
+SUFFIX       1147
+DEATHDATE    1000
+MAIDEN        832
+ZIP           545
+MARITAL       384
+PASSPORT      276
+PREFIX        245
+DRIVERS       215
+dtype: int64
+
+Data types:
+Id                         str
+BIRTHDATE                  str
+DEATHDATE                  str
+SSN                        str
+DRIVERS                    str
+PASSPORT                   str
+PREFIX                     str
+FIRST                      str
+LAST                       str
+SUFFIX                     str
+MAIDEN                     str
+MARITAL                    str
+RACE                       str
+ETHNICITY                  str
+GENDER                     str
+BIRTHPLACE                 str
+ADDRESS                    str
+CITY                       str
+STATE                      str
+COUNTY                     str
+ZIP                    float64
+LAT                    float64
+LON                    float64
+HEALTHCARE_EXPENSES    float64
+HEALTHCARE_COVERAGE    float64
+dtype: object
+
+Memory usage: 1.29 MB
+
+================================================================================
+FILE: encounters.csv
+
+Rows: 61,459
+Columns: 15
+
+Columns:
+['Id', 'START', 'STOP', 'PATIENT', 'ORGANIZATION', 'PROVIDER', 'PAYER', 'ENCOUNTERCLASS', 'CODE', 'DESCRIPTION', 'BASE_ENCOUNTER_COST', 'TOTAL_CLAIM_COST', 'PAYER_COVERAGE', 'REASONCODE', 'REASONDESCRIPTION']
+
+First 5 rows:
+                                     Id  ... REASONDESCRIPTION
+0  748f8357-6cc7-551d-f31a-32fa2cf84126  ...               NaN
+1  5a4735ae-423f-6563-28ab-b3d11b49b2d4  ...               NaN
+2  0bee1ce6-3e2c-5506-f71c-a7ba8f64a3d3  ...               NaN
+3  6e93bcf9-45a4-8528-0120-1c1eaa930faf  ...               NaN
+4  8b6787c3-4316-a0cb-899d-4746525c319f  ...               NaN
+
+[5 rows x 15 columns]
+
+Missing values:
+REASONCODE           45502
+REASONDESCRIPTION    45502
+dtype: int64
+
+Data types:
+Id                         str
+START                      str
+STOP                       str
+PATIENT                    str
+ORGANIZATION               str
+PROVIDER                   str
+PAYER                      str
+ENCOUNTERCLASS             str
+CODE                     int64
+DESCRIPTION                str
+BASE_ENCOUNTER_COST    float64
+TOTAL_CLAIM_COST       float64
+PAYER_COVERAGE         float64
+REASONCODE             float64
+REASONDESCRIPTION          str
+dtype: object
+
+Unique patients: 1,163
+
+Memory usage: 46.00 MB
+
+================================================================================
+FILE: conditions.csv
+
+Rows: 38,094
+Columns: 6
+
+Columns:
+['START', 'STOP', 'PATIENT', 'ENCOUNTER', 'CODE', 'DESCRIPTION']
+
+First 5 rows:
+        START        STOP  ...       CODE                  DESCRIPTION
+0  2013-06-24  2013-07-02  ...   10509002  Acute bronchitis (disorder)
+1  2016-02-27  2016-03-14  ...  283371005        Laceration of forearm
+2  2016-08-11  2016-08-22  ...  444814009   Viral sinusitis (disorder)
+3  2016-11-27  2016-12-17  ...  444814009   Viral sinusitis (disorder)
+4  2017-02-22  2017-06-02  ...   16114001            Fracture of ankle
+
+[5 rows x 6 columns]
+
+Missing values:
+STOP    8169
+dtype: int64
+
+Data types:
+START            str
+STOP             str
+PATIENT          str
+ENCOUNTER        str
+CODE           int64
+DESCRIPTION      str
+dtype: object
+
+Unique patients: 1,147
+
+Memory usage: 13.32 MB
+
+================================================================================
+FILE: medications.csv
+
+Rows: 56,430
+Columns: 13
+
+Columns:
+['START', 'STOP', 'PATIENT', 'PAYER', 'ENCOUNTER', 'CODE', 'DESCRIPTION', 'BASE_COST', 'PAYER_COVERAGE', 'DISPENSES', 'TOTALCOST', 'REASONCODE', 'REASONDESCRIPTION']
+
+First 5 rows:
+                  START  ...            REASONDESCRIPTION
+0  2020-02-17T10:40:32Z  ...                          NaN
+1  2020-02-17T10:40:32Z  ...                          NaN
+2  2013-06-24T06:39:19Z  ...  Acute bronchitis (disorder)
+3  2016-02-27T08:52:29Z  ...                          NaN
+4  2017-02-22T09:25:31Z  ...                          NaN
+
+[5 rows x 13 columns]
+
+Missing values:
+REASONCODE           15471
+REASONDESCRIPTION    15471
+STOP                  2713
+dtype: int64
+
+Data types:
+START                    str
+STOP                     str
+PATIENT                  str
+PAYER                    str
+ENCOUNTER                str
+CODE                   int64
+DESCRIPTION              str
+BASE_COST            float64
+PAYER_COVERAGE       float64
+DISPENSES              int64
+TOTALCOST            float64
+REASONCODE           float64
+REASONDESCRIPTION        str
+dtype: object
+
+Unique patients: 1,117
+
+Memory usage: 31.58 MB
+
+================================================================================
+FILE: observations.csv
+
+Rows: 531,144
+Columns: 9
+
+Columns:
+['DATE', 'PATIENT', 'ENCOUNTER', 'CATEGORY', 'CODE', 'DESCRIPTION', 'VALUE', 'UNITS', 'TYPE']
+
+First 5 rows:
+                   DATE                               PATIENT  ...    UNITS     TYPE
+0  2019-02-17T05:07:38Z  b9c610cd-28a6-4636-ccb6-c7a0d2a4cb85  ...       cm  numeric
+1  2019-02-17T05:07:38Z  b9c610cd-28a6-4636-ccb6-c7a0d2a4cb85  ...  {score}  numeric
+2  2019-02-17T05:07:38Z  b9c610cd-28a6-4636-ccb6-c7a0d2a4cb85  ...       kg  numeric
+3  2019-02-17T05:07:38Z  b9c610cd-28a6-4636-ccb6-c7a0d2a4cb85  ...        %  numeric
+4  2019-02-17T05:07:38Z  b9c610cd-28a6-4636-ccb6-c7a0d2a4cb85  ...       cm  numeric
+
+[5 rows x 9 columns]
+
+Missing values:
+UNITS        185017
+ENCOUNTER     31662
+CATEGORY      31662
+dtype: int64
+
+Data types:
+DATE           str
+PATIENT        str
+ENCOUNTER      str
+CATEGORY       str
+CODE           str
+DESCRIPTION    str
+VALUE          str
+UNITS          str
+TYPE           str
+dtype: object
+
+Unique patients: 1,163
+
+Memory usage: 302.79 MB
+
+================================================================================
+FILE: procedures.csv
+
+Rows: 83,823
+Columns: 9
+
+Columns:
+['START', 'STOP', 'PATIENT', 'ENCOUNTER', 'CODE', 'DESCRIPTION', 'BASE_COST', 'REASONCODE', 'REASONDESCRIPTION']
+
+First 5 rows:
+                  START                  STOP  ... REASONCODE REASONDESCRIPTION
+0  2019-02-17T05:07:38Z  2019-02-17T05:22:38Z  ...        NaN               NaN
+1  2019-05-26T05:07:38Z  2019-05-26T05:22:38Z  ...        NaN               NaN
+2  2019-07-28T05:07:38Z  2019-07-28T05:22:38Z  ...        NaN               NaN
+3  2020-02-17T10:07:38Z  2020-02-17T10:40:32Z  ...        NaN               NaN
+4  2020-04-26T05:07:38Z  2020-04-26T05:22:38Z  ...        NaN               NaN
+
+[5 rows x 9 columns]
+
+Missing values:
+REASONCODE           63226
+REASONDESCRIPTION    63226
+dtype: int64
+
+Data types:
+START                    str
+STOP                     str
+PATIENT                  str
+ENCOUNTER                str
+CODE                   int64
+DESCRIPTION              str
+BASE_COST            float64
+REASONCODE           float64
+REASONDESCRIPTION        str
+dtype: object
+
+Unique patients: 1,162
+
+Memory usage: 37.17 MB
