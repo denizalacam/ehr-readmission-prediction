@@ -84,13 +84,13 @@ Logistic Regression   PyTorch Neural Network
 
 ## Results
 
-  Metric        Logistic Regression   PyTorch MLP Better Model
+| Metric | Logistic Regression | PyTorch MLP | Better Model |
 |--------|--------------------:|------------:|-------------|
-  Accuracy                   0.7635    **0.7815** ✅ PyTorch
-  ROC-AUC                    0.8326    **0.8537** ✅ PyTorch
-  Precision                  0.7090    **0.7663** ✅ PyTorch
-  Recall                 **0.6584**        0.6253 ✅ Logistic Regression
-  F1-Score                   0.6827    **0.6887** ✅ PyTorch
+| Accuracy | 0.7635 | 0.7815 | ✅ PyTorch |
+| ROC-AUC | 0.8326 | 0.8537 | ✅ PyTorch |
+| Precision | 0.7090 | 0.7663 | ✅ PyTorch |
+| Recall | 0.6584 | 0.6253 | ✅ Logistic Regression |
+| F1-Score | 0.6827 | 0.6887 | ✅ PyTorch |
 
 The project compares a classical machine learning baseline with a neural
 network rather than assuming a deep learning model is always superior.
