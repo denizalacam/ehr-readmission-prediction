@@ -9,6 +9,9 @@ transforming relational EHR tables into an encounter-level prediction
 dataset, to feature engineering, model development, evaluation, and
 comparison of classical machine learning and deep learning approaches.
 
+
+<img width="1024" height="1536" alt="DeepEHR_HeroImage" src="https://github.com/user-attachments/assets/c50a44c6-b070-49a1-a47a-70c8e5613398" />
+
 ------------------------------------------------------------------------
 
 ## Workflow
