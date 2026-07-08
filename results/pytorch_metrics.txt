@@ -1,0 +1,8 @@
+DeepEHR PyTorch MLP Results
+========================================
+
+Accuracy: 0.7815
+ROC-AUC: 0.8537
+Precision: 0.7663
+Recall: 0.6253
+F1-Score: 0.6887

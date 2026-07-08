@@ -1,0 +1,8 @@
+DeepEHR Baseline Logistic Regression Results
+==================================================
+
+Accuracy: 0.7635
+ROC-AUC: 0.8326
+Precision: 0.7090
+Recall: 0.6584
+F1-Score: 0.6827
