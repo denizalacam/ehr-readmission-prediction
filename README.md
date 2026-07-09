@@ -234,7 +234,6 @@ git clone https://github.com/denizalacam/ehr-readmission-prediction.git
 
 cd ehr-readmission-prediction
 
-<<<<<<< HEAD
 ## Installation
 
 Clone the repository:
@@ -248,7 +247,7 @@ Create a virtual environment:
 
 ```bash
 =======
->>>>>>> 9477661 (Add XGBoost model and feature importance)
+
 python -m venv .venv
 
 source .venv/bin/activate
