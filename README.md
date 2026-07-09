@@ -1,4 +1,4 @@
-# EHRPredict
+# EHR Readmission Prediction
 
 ### End-to-End Machine Learning Pipeline for Predicting 30-Day Hospital Readmission Using Synthetic Electronic Health Record (EHR) Data
 
