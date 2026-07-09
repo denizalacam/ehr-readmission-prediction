@@ -184,7 +184,6 @@ python src/features.py
 
 ------------------------------------------------------------------------
 
-## Running the Project
 ## Installation
 
 Clone the repository:
