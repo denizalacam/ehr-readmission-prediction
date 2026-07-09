@@ -19,8 +19,14 @@ __pycache__/
 data/raw/
 data/processed/
 
-# Models
-models/
+# Ignore everything in models
+models/*
+
+# But keep trained models
+!models/logistic_regression.pkl
+!models/preprocessor.pkl
+!models/pytorch_mlp.pt
+!models/xgboost_model.pkl
 
 # Outputs
 outputs/

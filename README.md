@@ -1,22 +1,39 @@
-# DeepEHR: Hospital Readmission Prediction using Machine Learning and Deep Learning
+# EHRPredict
 
-DeepEHR is an end-to-end healthcare AI project that predicts **30-day
-hospital readmission risk** using synthetic Electronic Health Record
-(EHR) data generated with **Synthea**.
+### End-to-End Machine Learning Pipeline for Predicting 30-Day Hospital Readmission Using Synthetic Electronic Health Record (EHR) Data
 
-The project demonstrates the complete machine learning workflow---from
-transforming relational EHR tables into an encounter-level prediction
-dataset, to feature engineering, model development, evaluation, and
-comparison of classical machine learning and deep learning approaches.
 
+<<<<<<< HEAD
 
 <img width="1024" height="1536" alt="DeepEHR_HeroImage" src="https://github.com/user-attachments/assets/c50a44c6-b070-49a1-a47a-70c8e5613398" />
 
 ------------------------------------------------------------------------
+=======
+EHRPredict is an end-to-end healthcare AI project that predicts **30-day hospital readmission** using synthetic Electronic Health Record (EHR) data generated with **Synthea**.
+>>>>>>> 9477661 (Add XGBoost model and feature importance)
 
-## Workflow
+The project demonstrates the complete machine learning workflow—from transforming raw relational healthcare data into an encounter-level prediction dataset, through feature engineering, model development, evaluation, and comparison of multiple machine learning approaches.
 
-``` text
+---
+
+# Project Highlights
+
+- Built an encounter-level prediction dataset from relational EHR tables.
+- Generated 30-day readmission labels using longitudinal patient encounters.
+- Engineered demographic, encounter, utilization, and healthcare cost features.
+- Developed a reusable preprocessing pipeline.
+- Implemented three predictive models:
+  - Logistic Regression
+  - PyTorch Multi-Layer Perceptron (MLP)
+  - XGBoost
+- Compared model performance using multiple evaluation metrics.
+- Generated feature importance, ROC curves, confusion matrices, and automated comparison reports.
+
+---
+
+# Workflow
+
+```text
 Raw Synthea EHR Data
         │
         ▼
@@ -35,97 +52,144 @@ Train / Test Split
 Preprocessing Pipeline
 (Standardization + One-Hot Encoding)
         │
-        ├───────────────┐
-        ▼               ▼
-Logistic Regression   PyTorch Neural Network
-        │               │
-        └───────┬───────┘
-                ▼
-      Model Evaluation
-                ▼
-      Model Comparison
+        ├───────────────┬─────────────────┐
+        ▼               ▼                 ▼
+Logistic Regression  PyTorch MLP     XGBoost
+        │               │                 │
+        └───────────────┴─────────────────┘
+                        │
+                        ▼
+               Model Evaluation
+                        │
+                        ▼
+               Model Comparison
 ```
 
-------------------------------------------------------------------------
+---
 
-## Project Highlights
+# Models
 
--   Built an encounter-level readmission prediction dataset from
-    relational EHR tables.
--   Generated a 30-day readmission label using longitudinal encounter
-    history.
--   Engineered demographic, encounter, utilization, and healthcare cost
-    features.
--   Developed a reusable preprocessing pipeline using scaling and
-    one-hot encoding.
--   Implemented a Logistic Regression baseline model.
--   Designed and trained a PyTorch Multi-Layer Perceptron (MLP).
--   Evaluated both models using multiple performance metrics.
--   Automated model saving, metric reporting, visualization generation,
-    and model comparison.
+## Logistic Regression
 
-------------------------------------------------------------------------
+A classical linear baseline model used to establish benchmark performance.
 
-## Models
+## PyTorch Neural Network
 
-### Baseline
+A Multi-Layer Perceptron (MLP) implemented in PyTorch.
 
--   Logistic Regression
--   Standardized numerical features
--   One-hot encoded categorical features
+Architecture:
 
-### Deep Learning
+- 19 engineered input features
+- Hidden layer (32 neurons)
+- ReLU activation
+- BCEWithLogitsLoss
+- Adam optimizer
 
--   PyTorch Multi-Layer Perceptron (MLP)
--   Hidden layer: 32 neurons
--   ReLU activation
--   BCEWithLogitsLoss
--   Adam optimizer
--   Mini-batch training (batch size = 64)
+## XGBoost
 
-------------------------------------------------------------------------
+Gradient-boosted decision tree model.
 
-## Results
+Configuration:
 
-| Metric | Logistic Regression | PyTorch MLP | Better Model |
-|--------|--------------------:|------------:|-------------|
-| Accuracy | 0.7635 | 0.7815 | ✅ PyTorch |
-| ROC-AUC | 0.8326 | 0.8537 | ✅ PyTorch |
-| Precision | 0.7090 | 0.7663 | ✅ PyTorch |
-| Recall | 0.6584 | 0.6253 | ✅ Logistic Regression |
-| F1-Score | 0.6827 | 0.6887 | ✅ PyTorch |
+- 300 estimators
+- Maximum depth = 4
+- Learning rate = 0.05
+- Subsample = 0.9
+- Column sampling = 0.9
 
-The project compares a classical machine learning baseline with a neural
-network rather than assuming a deep learning model is always superior.
+---
 
-The PyTorch MLP achieved higher overall **accuracy**, **ROC-AUC**,
-**precision**, and **F1-score**, while Logistic Regression retained
-slightly higher **recall** for identifying readmitted patients. This
-demonstrates the importance of evaluating multiple metrics when
-selecting predictive models for healthcare applications.
+# Results
 
-------------------------------------------------------------------------
+| Metric | Logistic Regression | PyTorch MLP | XGBoost | Best Model |
+|--------|--------------------:|------------:|---------:|------------|
+| Accuracy | 0.7635 | 0.7815 | **0.8152** | 🏆 XGBoost |
+| ROC-AUC | 0.8326 | 0.8537 | **0.8818** | 🏆 XGBoost |
+| Precision | 0.7090 | 0.7663 | **0.8047** | 🏆 XGBoost |
+| Recall | 0.6584 | 0.6253 | **0.6893** | 🏆 XGBoost |
+| F1-Score | 0.6827 | 0.6887 | **0.7425** | 🏆 XGBoost |
 
-## Visualizations
+Rather than assuming a single algorithm is universally superior, this project evaluates multiple modeling approaches using complementary performance metrics.
 
-The training pipeline automatically generates:
+Among the evaluated models, **XGBoost achieved the strongest overall predictive performance**, demonstrating the effectiveness of gradient-boosted decision trees for structured healthcare data.
 
--   Training loss curve
--   ROC curve
--   Confusion matrix
--   Feature importance
--   Model comparison table
+---
 
-``` text
+# Visualizations
+
+The pipeline automatically generates:
+
+- ROC Curve
+- Confusion Matrix
+- PyTorch Training Loss
+- Logistic Regression Feature Importance
+- XGBoost Feature Importance
+- Model Comparison Table
+
+---
+
+# Technologies
+
+### Languages & Libraries
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- PyTorch
+- XGBoost
+- Matplotlib
+- Joblib
+
+### Machine Learning Concepts
+
+- Feature Engineering
+- Data Preprocessing
+- Binary Classification
+- Gradient Boosting
+- Deep Learning
+- Model Evaluation
+- Healthcare AI
+
+---
+
+# Repository Structure
+
+```text
+ehr-readmission-prediction/
+
+data/
+├── raw/
+└── processed/
+
+models/
+├── logistic_regression.pkl
+├── pytorch_mlp.pt
+├── xgboost_model.pkl
+└── preprocessor.pkl
+
 results/
-├── training_loss.png
+├── metrics.txt
+├── pytorch_metrics.txt
+├── xgboost_metrics.txt
+├── model_comparison.csv
 ├── roc_curve.png
 ├── confusion_matrix.png
+├── training_loss.png
 ├── feature_importance.csv
-└── model_comparison.csv
+└── xgboost_feature_importance.png
+
+src/
+├── preprocess.py
+├── features.py
+├── data_pipeline.py
+├── train_baseline.py
+├── train_pytorch.py
+├── train_xgboost.py
+└── compare_models.py
 ```
 
-------------------------------------------------------------------------
+---
 
 ## Repository Structure
 
@@ -160,30 +224,25 @@ Machine Learning • Deep Learning • Feature Engineering • Healthcare AI
 ------------------------------------------------------------------------
 
 ## Dataset
+=======
+# Data Source
 
 This project uses **synthetic Electronic Health Record (EHR) data** generated by **Synthea**.
 
-The processed encounter-level dataset used for model development is included in this repository, allowing the project to be reproduced immediately.
+The processed encounter-level dataset is included to enable immediate reproducibility.
 
-Users who wish to recreate the preprocessing pipeline from the original synthetic EHR tables can generate data using the official Synthea project:
+Users wishing to recreate the preprocessing pipeline can generate the original synthetic EHR tables using the official Synthea project.
 
-- https://github.com/synthetichealth/synthea
+---
 
-After generating the raw CSV files, place them in:
-
-```text
-data/raw/
-```
-
-and run:
+# Installation
 
 ```bash
-python src/preprocess.py
-python src/features.py
-```
+git clone https://github.com/denizalacam/ehr-readmission-prediction.git
 
-------------------------------------------------------------------------
+cd ehr-readmission-prediction
 
+<<<<<<< HEAD
 ## Installation
 
 Clone the repository:
@@ -196,56 +255,89 @@ cd deepehr-readmission
 Create a virtual environment:
 
 ```bash
+=======
+>>>>>>> 9477661 (Add XGBoost model and feature importance)
 python -m venv .venv
-```
 
-Activate it:
-
-**macOS / Linux**
-
-```bash
 source .venv/bin/activate
-```
 
-**Windows**
-
-```bash
-.venv\Scripts\activate
-```
-
-Install dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
-Run:
- 
-``` bash
-python3 src/preprocess.py
-python3 src/features.py
-python3 src/train_baseline.py
-python3 src/train_pytorch.py
-python3 src/compare_models.py
+---
+
+# Running the Project
+
+```bash
+python src/preprocess.py
+
+python src/features.py
+
+python src/train_baseline.py
+
+python src/train_pytorch.py
+
+python src/train_xgboost.py
+
+python src/compare_models.py
 ```
 
-------------------------------------------------------------------------
+---
 
-## Future Improvements
+# Project Evolution
 
--   Add diagnosis, medication, and procedure features.
--   Perform hyperparameter optimization.
--   Evaluate additional models such as XGBoost and LightGBM.
--   Incorporate temporal patient history using sequence models.
--   Add model explainability with SHAP.
--   Deploy the model with Streamlit.
+## ✅ Version 1.0
 
-------------------------------------------------------------------------
+- Built encounter-level dataset
+- Developed reusable preprocessing pipeline
+- Implemented Logistic Regression baseline
+- Built a PyTorch Multi-Layer Perceptron
+- Compared classical machine learning and deep learning models
 
-## About This Project
+## ✅ Version 1.1
 
-This project demonstrates an end-to-end machine learning workflow for
-healthcare prediction, emphasizing data engineering, feature
-engineering, reproducible preprocessing, model evaluation, software
-organization, and comparison of classical machine learning with deep
-learning approaches.
+- Added XGBoost classifier
+- Automated three-model comparison
+- Implemented XGBoost feature importance analysis
+- Achieved the best predictive performance with gradient boosting
+
+---
+
+# Future Directions
+
+The project will continue to evolve with additional machine learning capabilities.
+
+### Planned Version 1.2
+
+- SHAP explainability
+- Global and local feature interpretation
+- Enhanced model transparency for healthcare AI
+
+### Planned Version 1.3
+
+- Streamlit web application
+- Interactive patient risk prediction
+- Real-time model inference
+
+### Planned Version 1.4
+
+- Hyperparameter optimization using Optuna
+- Automated model tuning
+
+### Planned Version 1.5
+
+- LightGBM benchmarking
+- CatBoost benchmarking
+- Comprehensive gradient boosting comparison
+
+### Planned Version 2.0
+
+- Temporal patient modeling
+- Longitudinal EHR representation
+- LSTM and Transformer architectures
+
+---
+
+# About This Project
+
+This project demonstrates an end-to-end machine learning workflow for healthcare prediction, emphasizing data engineering, feature engineering, reproducible preprocessing, model evaluation, software organization, and comparison of classical machine learning with deep learning approaches.

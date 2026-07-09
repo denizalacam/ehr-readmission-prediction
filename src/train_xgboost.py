@@ -7,6 +7,7 @@ from pathlib import Path
 import joblib
 import pandas as pd
 import xgboost as xgb
+import matplotlib.pyplot as plt
 
 from sklearn.metrics import (
     accuracy_score,
@@ -107,6 +108,40 @@ def save_xgboost_model(model):
     print(f"\nSaved XGBoost model to: {output_path}")
 
 
+def save_xgboost_feature_importance(model, feature_names):
+    importance_df = pd.DataFrame(
+        {
+            "feature": feature_names,
+            "importance": model.feature_importances_,
+        }
+    )
+
+    importance_df = importance_df.sort_values(
+        by="importance",
+        ascending=False,
+    )
+
+    csv_path = RESULTS_DIR / "xgboost_feature_importance.csv"
+    importance_df.to_csv(csv_path, index=False)
+
+    top_features = importance_df.head(10)
+
+    plt.figure(figsize=(10, 6))
+    plt.barh(
+        top_features["feature"][::-1],
+        top_features["importance"][::-1],
+    )
+    plt.xlabel("Importance")
+    plt.title("Top 10 XGBoost Feature Importances")
+    plt.tight_layout()
+
+    plot_path = RESULTS_DIR / "xgboost_feature_importance.png"
+    plt.savefig(plot_path, dpi=300, bbox_inches="tight")
+    plt.close()
+
+    print(f"\nSaved XGBoost feature importance CSV to: {csv_path}")
+    print(f"Saved XGBoost feature importance plot to: {plot_path}")
+
 def main():
     dataset = load_dataset()
 
@@ -137,6 +172,11 @@ def main():
     save_xgboost_metrics(metrics)
 
     save_xgboost_model(model)
+
+    save_xgboost_feature_importance(
+    model,
+    X_train_processed.columns,
+)
 
 
 if __name__ == "__main__":
