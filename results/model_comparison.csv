@@ -1,6 +1,6 @@
-Metric,Logistic Regression,PyTorch MLP,Better Model
-Accuracy,0.7635,0.7815,PyTorch MLP
-ROC-AUC,0.8326,0.8537,PyTorch MLP
-Precision,0.709,0.7663,PyTorch MLP
-Recall,0.6584,0.6253,Logistic Regression
-F1-Score,0.6827,0.6887,PyTorch MLP
+Metric,Logistic Regression,PyTorch MLP,XGBoost,Best Model
+Accuracy,0.7635,0.7815,0.8152,XGBoost
+ROC-AUC,0.8326,0.8537,0.8818,XGBoost
+Precision,0.709,0.7663,0.8047,XGBoost
+Recall,0.6584,0.6253,0.6893,XGBoost
+F1-Score,0.6827,0.6887,0.7425,XGBoost

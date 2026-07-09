@@ -1,0 +1,8 @@
+EHRPredict XGBoost Results
+========================================
+
+Accuracy: 0.8152
+ROC-AUC: 0.8818
+Precision: 0.8047
+Recall: 0.6893
+F1-Score: 0.7425
