@@ -2,15 +2,7 @@
 
 ### End-to-End Machine Learning Pipeline for Predicting 30-Day Hospital Readmission Using Synthetic Electronic Health Record (EHR) Data
 
-
-<<<<<<< HEAD
-
-<img width="1024" height="1536" alt="DeepEHR_HeroImage" src="https://github.com/user-attachments/assets/c50a44c6-b070-49a1-a47a-70c8e5613398" />
-
-------------------------------------------------------------------------
-=======
 EHRPredict is an end-to-end healthcare AI project that predicts **30-day hospital readmission** using synthetic Electronic Health Record (EHR) data generated with **Synthea**.
->>>>>>> 9477661 (Add XGBoost model and feature importance)
 
 The project demonstrates the complete machine learning workflow—from transforming raw relational healthcare data into an encounter-level prediction dataset, through feature engineering, model development, evaluation, and comparison of multiple machine learning approaches.
 
