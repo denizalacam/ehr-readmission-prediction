@@ -329,6 +329,13 @@ The project will continue to evolve with additional machine learning capabilitie
 
 ---
 
-# About This Project
+# Author
 
-This project demonstrates an end-to-end machine learning workflow for healthcare prediction, emphasizing data engineering, feature engineering, reproducible preprocessing, model evaluation, software organization, and comparison of classical machine learning with deep learning approaches.
+**Deniz Alacam**
+
+
+---
+
+# License
+
+This project is released under the MIT License.
